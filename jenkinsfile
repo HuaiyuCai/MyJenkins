@@ -6,12 +6,15 @@ pipeline{
 	}
 
 	parameters {
-		booleanParam name: 'RUN_TESTS', defaultValue: true, description: 'Run Tests?'
+		booleanParam name: 'BUILD', defaultValue: true, description: 'Build?'
 		booleanParam name: 'RUN_ANALYSIS', defaultValue: true, description: 'Run Static Code Analysis?'
 		booleanParam name: 'DEPLOY', defaultValue: true, description: 'Deploy Artifacts?'
 	}
     stages {
         stage('Build') {
+            when {
+                environment name: 'BUILD', value: 'true'
+            }
             steps{
                 echo 'This is a build step' 
                 cmake arguments: '-G "Visual Studio 14 2015 Win64"', installation: 'InSearchPath'
