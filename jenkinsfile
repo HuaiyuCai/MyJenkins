@@ -16,7 +16,7 @@ pipeline{
                 environment name: 'BUILD', value: 'true'
             }
             steps{
-                echo 'This is a build step, wonderful!' 
+                echo 'This is a build step, wonderful!!!' 
                 cmake arguments: '-G "Visual Studio 14 2015 Win64"', installation: 'InSearchPath'
                 cmakeBuild buildType: 'Release', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
             }
