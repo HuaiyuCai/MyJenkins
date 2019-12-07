@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Test') {
             steps{
-                echo 'This is a test step'  
+                echo 'This is a test step,test githubweb'  
             }
         }
         stage('Deploy') {
