@@ -23,6 +23,7 @@ pipeline{
         }
         stage('Test') {
             steps{
+                bat 'md test_md'
                 echo 'This is a test step, close sunny-ngrok!'  
             }
         }
