@@ -28,11 +28,15 @@ pipeline{
         }
         stage('Test') {
             steps{
-                bat 'md test_md'
                 echo 'This is a test step, close sunny-ngrok again again again!'  
             }
         }
         stage('Deploy') {
+             when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
             steps{
                 echo 'This is a deploy step. Done'    
             }
