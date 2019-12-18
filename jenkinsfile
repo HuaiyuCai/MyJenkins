@@ -15,6 +15,12 @@ pipeline{
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
+            environment { 
+                DEBUG_FLAGS = '-g'
+            }
+            steps {
+                bat 'printenv'
+            }
         }
         stage('Build') {
             when {
