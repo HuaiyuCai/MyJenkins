@@ -17,13 +17,9 @@ pipeline{
             }
             steps{
                 echo 'This is a build step, wonderful again!!!' 
-                cmake {
-                    installation('InSearchPath')
-                    generator('Visual Studio 14 2015 Win64')
-                    cleanBuild()
-                    sourceDir()
-                    buildDir('build')
-                }
+                cmake arguments: '-G "Visual Studio 14 2015 Win64"', workDir: 'build',  installation: 'InSearchPath'
+                cmake arguments: '--build . --target doc', installation: 'InSearchPath'
+                cmakeBuild buildType: 'Release', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
             }
         }
         stage('Test') {
