@@ -11,15 +11,6 @@ pipeline{
 		booleanParam name: 'DEPLOY', defaultValue: true, description: 'Deploy Artifacts?'
 	}
     stages {
-        stage('Example') {
-            environment { 
-                DEBUG_FLAGS = '-g'
-            }
-            steps {
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                bat 'printenv'
-            }
-        }
         stage('Build') {
             when {
                 environment name: 'BUILD', value: 'true'
