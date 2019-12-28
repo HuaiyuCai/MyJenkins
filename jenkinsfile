@@ -1,8 +1,9 @@
 pipeline{
-    agent any
-    
-    ws("D:/jenkins_workspaces") {
-        echo "awesome commands here instead of echo"
+    agent {
+        node {
+            label 'label'
+            customWorkspace 'D:/jenkins_workspaces'
+        }
     }
 
     options {
