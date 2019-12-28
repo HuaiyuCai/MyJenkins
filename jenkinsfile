@@ -43,7 +43,7 @@ pipeline{
                 publishHTML target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
-                    keepAll: true,
+                    keepAll: false,
                     reportDir: 'build/html',
                     reportFiles: 'index.html',
                     reportName: 'RCov Report'
