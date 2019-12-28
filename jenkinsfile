@@ -1,6 +1,9 @@
 pipeline{
-    agent any{
-        customWorkspace 'D:/jenkins_workspaces'
+    agent {
+        label {
+            label ""
+            customWorkspace "D:/jenkins_workspaces"
+        }
     }
 
     options {
