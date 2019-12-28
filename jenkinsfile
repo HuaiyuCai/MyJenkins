@@ -41,8 +41,8 @@ pipeline{
             steps{
                 echo 'This is a deploy step. Done'    
                 doxygen [
-                    doxyfile('./build')
-                    install('InSearchPath')
+                    doxyfile('./build/Doxyfile')
+                    install('doxygen')
                 ]
             }
         }
