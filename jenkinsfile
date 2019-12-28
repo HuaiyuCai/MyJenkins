@@ -1,6 +1,10 @@
 pipeline{
     agent any
     
+    ws("D:/jenkins_workspaces") {
+        echo "awesome commands here instead of echo"
+    }
+
     options {
 		buildDiscarder(logRotator(numToKeepStr: '10'))
 	}
@@ -19,6 +23,7 @@ pipeline{
                 echo 'This is a build step, wonderful again!!!' 
                 cmake arguments: '-G "Visual Studio 14 2015 Win64" ..', workingDir: 'build',  installation: 'InSearchPath'
                 cmake arguments: '--build . --target doc', workingDir: 'build', installation: 'InSearchPath'
+                // cmakeBuild buildType: 'Release', cleanBuild: true, workinstallation: 'InSearchPath', steps: [[withCmake: true]]
             }
         }
         stage('Test') {
