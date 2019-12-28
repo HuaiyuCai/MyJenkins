@@ -42,7 +42,6 @@ pipeline{
                 echo 'This is a deploy step. Done'    
                 doxygen [
                     doxyfile('./build/Doxyfile')
-                    install('doxygen')
                 ]
             }
         }
