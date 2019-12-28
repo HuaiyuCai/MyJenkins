@@ -40,13 +40,9 @@ pipeline{
             }
             steps{
                 echo 'This is a deploy step. Done'    
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: false,
-                    reportDir: 'build/html',
-                    reportFiles: 'index.html',
-                    reportName: 'RCov Report'
+                doxygen [
+                    doxyfile('./build')
+                    install('InSearchPath')
                 ]
             }
         }
