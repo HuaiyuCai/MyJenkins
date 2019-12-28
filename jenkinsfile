@@ -40,9 +40,9 @@ pipeline{
             }
             steps{
                 echo 'This is a deploy step. Done'    
-                doxygen [
+                doxygen {
                     doxyfile('./build/Doxyfile')
-                ]
+                }
             }
         }
     }
