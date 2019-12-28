@@ -1,5 +1,5 @@
 pipeline{
-    agent {
+    agent any{
         customWorkspace 'D:/jenkins_workspaces'
     }
 
