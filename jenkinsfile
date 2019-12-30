@@ -35,14 +35,14 @@ pipeline{
             }
             steps{
                 echo 'This is a build step, wonderful again!!!' 
-                cmakeBuild:[
+                cmakeBuild{
                     buildDir: 'build',
                     buildType: 'Debug',
                     cleanBuild: true,
                     generator: 'Visual Studio 14 2015 Win64',
                     installation: 'InSearchPath',
                     steps: [[args: '--target doc', withCmake: true]]
-                ]
+                }
             }
         }
         stage('Test') {
