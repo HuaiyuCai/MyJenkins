@@ -16,18 +16,14 @@ pipeline{
 		booleanParam name: 'DEPLOY', defaultValue: true, description: 'Deploy Artifacts?'
 	}
     stages {
-        stage ('Invoke_pipeline') {
-            steps {
-                build job: 'MyJenkinsCmake', parameters: []
-            }
-        }
         stage('Build') {
             when {
                 environment name: 'BUILD', value: 'true'
             }
             steps{
                 echo 'This is a build step, wonderful again!!!' 
-                cmakeBuild buildDir: 'build', buildType: 'Debug', cleanBuild: true, generator: 'Visual Studio 14 2015 Win64', installation: 'InSearchPath', steps: [[args: '--target doc', withCmake: true]]
+                cmakeBuild buildDir: 'build', buildType: 'Debug', cleanBuild: true, generator: 'Visual Studio 14 2015 Win64', installation: 'InSearchPath'
+                cmakeBuild buildDir: 'build', installation: 'InSearchPath', steps: [[args: '--target doc', withCmake: true]]
             }
         }
         stage('Test') {
