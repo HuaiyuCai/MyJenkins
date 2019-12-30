@@ -15,6 +15,7 @@ pipeline{
 		booleanParam name: 'RUN_ANALYSIS', defaultValue: true, description: 'Run Static Code Analysis?'
 		booleanParam name: 'DEPLOY', defaultValue: true, description: 'Deploy Artifacts?'
 		string name: 'BUILD_DIR', defaultValue: 'build', description: 'build dir?'
+		string name: 'SOURCE_DIR', defaultValue: '.', description: 'build dir?'
 	}
     stages {
         stage('Build') {
@@ -24,7 +25,7 @@ pipeline{
             steps{
                 echo 'This is a build step, wonderful again!!!' 
                 cmakeBuild buildDir: 'build', buildType: 'Debug', cleanBuild: true, generator: 'Visual Studio 14 2015 Win64', installation: 'InSearchPath'
-                cmakeBuild buildDir: "${params.BUILD_DIR}", installation: 'InSearchPath', steps: [[args: '--target doc', withCmake: true]]
+                cmakeBuild buildDir: "${params.BUILD_DIR}", sourceDir: "${params.SOURCE_DIR}", installation: 'InSearchPath', steps: [[args: '--target doc', withCmake: true]]
             }
         }
         stage('Test') {
