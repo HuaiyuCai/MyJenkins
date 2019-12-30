@@ -14,7 +14,7 @@ pipeline{
 		booleanParam name: 'BUILD', defaultValue: true, description: 'Build what?'
 		booleanParam name: 'RUN_ANALYSIS', defaultValue: true, description: 'Run Static Code Analysis?'
 		booleanParam name: 'DEPLOY', defaultValue: true, description: 'Deploy Artifacts?'
-		string(name: 'BUILD_DIR', defaultValue: 'build', description: 'build dir?')
+		booleanParam name: 'BUILD_DIR', defaultValue: true, description: 'build dir?'
 	}
     stages {
         stage('Build') {
